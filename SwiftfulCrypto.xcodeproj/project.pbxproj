@@ -20,6 +20,7 @@
 		AF65FDFE29081C2A00A2BFAC /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF65FDFD29081C2A00A2BFAC /* PreviewProvider.swift */; };
 		AF65FE0229081F7200A2BFAC /* CoinModelsMock.json in Resources */ = {isa = PBXBuildFile; fileRef = AF65FE0129081F7200A2BFAC /* CoinModelsMock.json */; };
 		AFCFDC2B290824CA00DBEE49 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCFDC2A290824CA00DBEE49 /* Double.swift */; };
+		AFD489BB290969A60000B721 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD489BA290969A60000B721 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		AF65FDFD29081C2A00A2BFAC /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		AF65FE0129081F7200A2BFAC /* CoinModelsMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CoinModelsMock.json; sourceTree = "<group>"; };
 		AFCFDC2A290824CA00DBEE49 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		AFD489BA290969A60000B721 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		AF2AF3AE2906BBBE002BF2ED /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				AFD489BA290969A60000B721 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF65FDFC29081BA100A2BFAC /* CoinRowView.swift in Sources */,
+				AFD489BB290969A60000B721 /* HomeViewModel.swift in Sources */,
 				AF2AF39E2906AF10002BF2ED /* ContentView.swift in Sources */,
 				AF2AF3B12906BBF1002BF2ED /* HomeView.swift in Sources */,
 				AF2AF39C2906AF10002BF2ED /* SwiftfulCryptoApp.swift in Sources */,
