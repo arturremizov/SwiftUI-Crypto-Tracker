@@ -24,24 +24,12 @@ class CoinDataService {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
-        coinSubscription = URLSession.shared.dataTaskPublisher(for: url)
-            .subscribe(on: DispatchQueue.global(qos: .default))
-            .tryMap { output in
-                guard let response = output.response as? HTTPURLResponse,
-                      (200..<300).contains(response.statusCode) else {
-                    throw URLError(.badServerResponse)
-                }
-                return output.data
-            }
-            .receive(on: DispatchQueue.main)
+        coinSubscription = NetworkingManager.download(url: url)
             .decode(type: [CoinModel].self, decoder: decoder)
-            .sink { competion in
-                if case let .failure(error) = competion {
-                    print(error.localizedDescription)
-                }
-            } receiveValue: { [weak self] coins in
+            .sink(receiveCompletion: NetworkingManager.handleCompletion,
+                  receiveValue: { [weak self] coins in
                 self?.allCoins = coins
                 self?.coinSubscription?.cancel()
-            }
+            })
     }
 }
