@@ -85,3 +85,9 @@ struct SparklineIn7D: Codable {
     let price: [Double]?
 }
 
+extension CoinModel: Equatable {
+    
+    static func == (lhs: CoinModel, rhs: CoinModel) -> Bool {
+        lhs.id == rhs.id
+    }
+}
