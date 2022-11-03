@@ -68,8 +68,10 @@ struct CoinModel: Identifiable, Codable {
     let priceChangePercentage24HInCurrency: Double?
     var currentHoldings: Double?
     
-    mutating func updateHoldings(amount: Double) {
-        self.currentHoldings = amount
+    func updateHoldings(amount: Double) -> CoinModel {
+        var coinModel = self
+        coinModel.currentHoldings = amount
+        return coinModel
     }
     
     var currentHoldingValue: Double {
