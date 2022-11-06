@@ -13,34 +13,42 @@ struct HomeView: View {
     @State private var showPortfolio: Bool = false // animate right
     @State private var showPortfolioView: Bool = false // new sheet
     
+    @State private var coinsStack: [CoinModel] = []
+    
     var body: some View {
-        ZStack {
-            // background layer
-            Color.theme.background
-                .ignoresSafeArea()
-                .sheet(isPresented: $showPortfolioView) {
-                    PortfolioView()
-                        .environmentObject(vm)
-                }
+        NavigationStack(path: $coinsStack) {
             
-            // content layer
-            VStack {
-                homeHeader
-                HomeStatsView(showPortfolio: $showPortfolio)
-                SearchBarView(searchText: $vm.searchText)
+            ZStack {
+                // background layer
+                Color.theme.background
+                    .ignoresSafeArea()
+                    .sheet(isPresented: $showPortfolioView) {
+                        PortfolioView()
+                            .environmentObject(vm)
+                    }
                 
-                columnTitles
-                
-                if !showPortfolio {
-                    allCoinsList
-                        .transition(.move(edge: .leading))
+                // content layer
+                VStack {
+                    homeHeader
+                    HomeStatsView(showPortfolio: $showPortfolio)
+                    SearchBarView(searchText: $vm.searchText)
+                    
+                    columnTitles
+                    
+                    if !showPortfolio {
+                        allCoinsList
+                            .transition(.move(edge: .leading))
+                    }
+                    if showPortfolio {
+                        portfolioCoinsList
+                            .transition(.move(edge: .trailing))
+                    }
+                    
+                    Spacer(minLength: 0)
                 }
-                if showPortfolio {
-                    portfolioCoinsList
-                        .transition(.move(edge: .trailing))
+                .navigationDestination(for: CoinModel.self) { coinModel in
+                    DetailView(coin: coinModel)
                 }
-                
-                Spacer(minLength: 0)
             }
         }
     }
@@ -48,11 +56,9 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            HomeView()
-                .toolbar(.hidden, for: .navigationBar)
-        }
-        .environmentObject(dev.homeViewModel)
+        HomeView()
+            .toolbar(.hidden, for: .navigationBar)
+            .environmentObject(dev.homeViewModel)
     }
 }
 
@@ -93,6 +99,11 @@ extension HomeView {
             ForEach(vm.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingColumn: false)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                    .background(
+                        NavigationLink(value: coin) {
+                            EmptyView()
+                        }
+                    )
             }
         }
         .listStyle(.plain)
@@ -103,6 +114,11 @@ extension HomeView {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingColumn: true)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                    .background(
+                        NavigationLink(value: coin) {
+                            EmptyView()
+                        }
+                    )
             }
         }
         .listStyle(.plain)

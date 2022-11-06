@@ -88,8 +88,13 @@ struct SparklineIn7D: Codable {
 }
 
 extension CoinModel: Equatable {
-    
     static func == (lhs: CoinModel, rhs: CoinModel) -> Bool {
         lhs.id == rhs.id
+    }
+}
+
+extension CoinModel: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

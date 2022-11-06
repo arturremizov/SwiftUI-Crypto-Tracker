@@ -19,11 +19,9 @@ struct SwiftfulCryptoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                HomeView()
-                    .toolbar(.hidden, for: .navigationBar)
-            }
-            .environmentObject(vm)
+            HomeView()
+                .toolbar(.hidden, for: .navigationBar)
+                .environmentObject(vm)
         }
     }
 }
