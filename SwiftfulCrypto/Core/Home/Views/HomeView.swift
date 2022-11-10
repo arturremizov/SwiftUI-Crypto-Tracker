@@ -103,6 +103,7 @@ extension HomeView {
                         NavigationLink(value: coin) {
                             EmptyView()
                         }
+                        .opacity(0.0)
                     )
             }
         }
@@ -118,6 +119,7 @@ extension HomeView {
                         NavigationLink(value: coin) {
                             EmptyView()
                         }
+                        .opacity(0.0)
                     )
             }
         }

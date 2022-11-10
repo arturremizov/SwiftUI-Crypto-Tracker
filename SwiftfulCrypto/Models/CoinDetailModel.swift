@@ -115,6 +115,10 @@ struct CoinDetailModel: Codable {
     let hashingAlgorithm: String?
     let description: Description?
     let links: Links?
+    
+    var readableDescription: String? {
+        description?.en?.removingHTMLOccurances
+    }
 }
 
 struct Description: Codable {
@@ -123,5 +127,5 @@ struct Description: Codable {
 
 struct Links: Codable {
     let homepage: [String]?
-    let subredditURL: String?
+    let subredditUrl: String?
 }
