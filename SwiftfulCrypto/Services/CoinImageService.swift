@@ -41,6 +41,7 @@ class CoinImageService {
             .map { data in
                 UIImage(data: data)
             }
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: NetworkingManager.handleCompletion,
                   receiveValue: { [weak self] image in
                 guard let self = self, let image else { return }

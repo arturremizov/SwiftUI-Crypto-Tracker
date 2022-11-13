@@ -74,7 +74,7 @@ extension SettingsView {
                     .scaledToFit()
                     .frame(height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
-                Text("The crypptocurrency data that is used in this app comes from a free AI from CoinGecko! Prices may be slightly delayed.")
+                Text("The cryptocurrency data that is used in this app comes from a free AI from CoinGecko! Prices may be slightly delayed.")
                     .font(.callout)
                     .fontWeight(.medium)
                     .foregroundColor(Color.theme.accent)
