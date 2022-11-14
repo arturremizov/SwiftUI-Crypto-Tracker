@@ -17,11 +17,22 @@ struct SettingsView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                swiftfullThinkingSection
-                coinGeckoSection
-                developerSection
-                applicationSection
+            ZStack {
+                // background
+                Color.theme.background.ignoresSafeArea()
+                
+                // content
+                List {
+                    swiftfullThinkingSection
+                        .listRowBackground(Color.theme.background.opacity(0.5))
+                    coinGeckoSection
+                        .listRowBackground(Color.theme.background.opacity(0.5))
+                    developerSection
+                        .listRowBackground(Color.theme.background.opacity(0.5))
+                    applicationSection
+                        .listRowBackground(Color.theme.background.opacity(0.5))
+                }
+                .scrollContentBackground(.hidden)
             }
             .font(.headline)
             .tint(.blue)
